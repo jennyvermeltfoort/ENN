@@ -1,0 +1,9 @@
+cc_library(
+    name = "spi",
+    srcs = glob(["src/*.c"]),
+    hdrs = glob(["include/*.c"]),
+    deps = [
+        
+    ],
+    visibility  = ["//visibility:public"],
+)
