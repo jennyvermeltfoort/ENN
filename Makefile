@@ -1,7 +1,6 @@
 ifeq ($(CC)),)
 CC := gcc
 endif
-
 ifeq ($(ENN_ROOT),)
 ENN_ROOT := ./
 endif
@@ -10,13 +9,12 @@ ENN_SRC_DIR := $(ENN_ROOT)/src
 ENN_BUILD_DIR := $(ENN_ROOT)/build
 ENN_OBJ_DIR := $(ENN_BUILD_DIR)/obj
 ENN_BIN_DIR := $(ENN_BUILD_DIR)/bin
-
 ENN_MAKEFILE := $(shell find $(ENN_SRC_DIR) -name Makefile)
 
-ENN_CPPFLAGS := -MMD -MP # -I is a preprocessor flag, not a compiler flag
-ENN_CFLAGS   := -Wall              # some warnings about bad code
-ENN_LDFLAGS  :=                    # -L is a linker flag
-ENN_LDLIBS   := -lm                # Left empty if no libs are needed
+ENN_CPPFLAGS := -MMD -MP
+ENN_CFLAGS   := -Wall
+ENN_LDFLAGS  :=
+ENN_LDLIBS   := -lm
 
 $(foreach makefile,$(ENN_MAKEFILE), \
 	$(eval include $(makefile)) \
@@ -28,9 +26,9 @@ $(foreach makefile,$(ENN_MAKEFILE), \
 
 ENN_FLAGS := $(ENN_APIS) $(ENN_LDFLAGS) $(ENN_OBJS) $(ENN_LDLIBS)
 
-.PHONY: all clean
+.PHONY: enn_clean enn_build
 
-$(ENN_OBJ_DIR)/%.o:  $(ENN_SRC_DIR)/%.c
+$(ENN_OBJ_DIR)/%.o: $(ENN_SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	$(CC) $(ENN_APIS) $(ENN_CPPFLAGS) $(ENN_CFLAGS) -c $< -o $@
 
