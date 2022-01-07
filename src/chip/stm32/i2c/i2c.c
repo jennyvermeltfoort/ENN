@@ -17,20 +17,16 @@
 #define CR1_ENGC_SET(_val) VMSL(_val, CR1_ENGC_MASK, CR1ENGCE_SHIFT)
 #define CR1_PE_SET(_val) VMSL(_val, CR1_PE_MASK, CR1_PE_SHIFT)
 
-void i2c_init(void)
+void i2c_init(void) { printf("i2c init.\n"); }
+
+void i2c_read(uint8_t size, uint8_t *data)
 {
-    printf("i2c init.\n");
+  (void)size;
+  (void)data;
 }
 
-void i2c_read(uint8_t size, uint8_t * data)
+void i2c_write(uint8_t size, uint8_t *data)
 {
-    (void) size;
-    (void) data;
-
-}
-
-void i2c_write(uint8_t size, uint8_t * data)
-{
-    (void) size;
-    (void) data;
+  (void)size;
+  (void)data;
 }
