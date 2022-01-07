@@ -1,2 +1,2 @@
 
-ENN_OBJ += spi.o
+UNIT_OBJ += i2c.o
