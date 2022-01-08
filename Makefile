@@ -48,8 +48,8 @@ $(LIB_DIR):
 # Flatten the folder structure for clean exposure.
 $(OBJ_DIR)/%.h: $(SRC_DIR)/%.h | $(LIB_API_DIR)
 	@mkdir -p $(@D)
-	touch $@
-	cp -n $< $(LIB_API_DIR)
+	@touch $@
+	@cp -n $< $(LIB_API_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
